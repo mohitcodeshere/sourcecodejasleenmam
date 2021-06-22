@@ -1,247 +1,147 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+//fetch code
 
-public class NewJFrame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NewJFrame
-     */
-    public NewJFrame() {
-        initComponents();
-    }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
-
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("EMI CAlCULATOR");
-
-        jLabel2.setText("Choose Loan Type");
-
-        jLabel3.setText("Enter Tenure");
-
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Four Wheeler");
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Two Wheeler");
-
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("Home");
-
-        buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setText("Education");
-
-        jButton1.setText("Calculate");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jTextField1.setText("Enter Months");
-
-        jLabel5.setText("Loan Amount");
-
-        jTextField2.setText("Amount");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
-                .addGap(19, 19, 19))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jRadioButton1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton4)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addComponent(jButton1)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel4)
-                        .addGap(62, 62, 62))))
-        );
-
-        pack();
-    }// </editor-fold>                        
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        Statement stmt;
-        ResultSet rset;
-        int loantype = 0;
-        int intrate = 0;
-        int emi=0;
-        int num=0,den=0;
-        int months=Integer.parseInt(jTextField1.getText());
-        int loanamt=Integer.parseInt(jTextField2.getText());
-        //Getting the selected btn
-        if (jRadioButton1.isSelected()) {
-            loantype = 1;
-        }
-        if (jRadioButton2.isSelected()) {
-            loantype = 2;
-        }
-        if (jRadioButton3.isSelected()) {
-            loantype = 3;
-        }
-        if (jRadioButton4.isSelected()) {
-
-            loantype = 4;
-        }
-
-        try {   //loading mysql drive
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Driver Loaded");
-            //ESTABLISHING THE CONNECTION
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/loan", "root", "password");
-            stmt = conn.createStatement();
-            rset = stmt.executeQuery("select * from loantype where ltype=" + loantype);
-            if (rset.next()) {
-                intrate = rset.getInt("interest");
-            }
-            num=(int) Math.pow(loanamt*intrate*(1+intrate),months);
-            den=(int) Math.pow((1+intrate),(months-1));
-            emi=(int)num/den;
-            jLabel4.setText("Your Monthy EMI for"+loanamt+" @"+intrate+"% for "+months+"Months is : "+emi);
-            conn.close();
-        } catch (ClassNotFoundException e) {
-            System.out.println(e);
-        } catch (SQLException x) {
-            System.out.println("CONNECTION FAILED!");
-
-        }
-
-    }                                        
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NewJFrame().setVisible(true);
-            }
-        });
-    }
-
-    // Variables declaration - do not modify                     
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    // End of variables declaration                   
-}
+package asimulator; 
+ 
+import java.sql.*; 
+    public class conn{     Connection c;     Statement s;     public conn(){           try{   
+            Class.forName("com.mysql.cj.jdbc.Driver");               c 
+=DriverManager.getConnection("jdbc:mysql://localhost:3306/artcommunity","root","root");                 s =c.createStatement();  
+            
+       }catch(Exception e){  
+            System.out.println(e); 
+       }   
+    }   
+}  
+//full source code
+package asimulator; 
+ import java.awt.*; import java.awt.event.*; import java.sql.ResultSet; 
+import java.text.AttributedCharacterIterator; import java.text.DecimalFormat; import java.util.ArrayList; import java.util.Enumeration; import java.util.Iterator; 
+ 
+import javax.swing.*; 
+import javax.swing.table.DefaultTableModel; 
+ 
+  
+public class calculator extends JFrame implements ActionListener { 
+ 	JLabel heading, name, pno, q1, l5, l6, l7, nameerror, pnoerror, pieerror; 
+ 	JTextField nameF, pnoF, q1F; 
+ 	JButton b1, b2, b3; 
+ 	JRadioButton r1, r2, r3; 
+ 	JComboBox c1; 
+ 	JCheckBox c2, c3, c4, c5; 
+ 	JToggleButton j1, j2, j3; 
+ 	 
+ 	 
+ 	 
+ 	 
+  	private final ButtonGroup buttonGroup1 = new ButtonGroup();  	
+    private final ButtonGroup buttonGroup2 = new ButtonGroup();  	
+    private final ButtonGroup buttonGroup = new ButtonGroup(); 
+ 	private JTable t1; 
+ 	 
+ 	private JScrollPane scrollPane; 
+ 
+ 	calculator(){ 
+     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+ 
+        setTitle("EMI"); 
+                  
+        heading = new JLabel("EMI Calculator"); 
+        heading.setFont(new Font("Segoe Script", Font.BOLD,35));         
+        heading.setForeground (Color.black);         
+        heading.setBounds(198,0,346,82);         
+        getContentPane().add(heading);     
+        name = new JLabel("amount"); 
+        name.setFont(new Font("Raleway", Font.ROMAN_BASELINE, 25));         
+        name.setBounds(175,72,100,30);         
+        getContentPane().add(name); 
+         
+        nameF = new JTextField(15);                 
+        nameF.setFont(new Font("Arial", Font.BOLD, 14));         
+        nameF.setBounds(349,78,230,30);         
+        getContentPane().add(nameF); 
+         
+        nameerror = new JLabel(""); 
+        nameerror.setFont(new Font("Raleway", Font.ROMAN_BASELINE, 25));         
+        nameerror.setBounds(582,78,100,30);         
+        getContentPane().add(nameerror);         
+        nameerror.setVisible(false); 
+         
+        pno = new JLabel("time"); 
+        pno.setFont(new Font("Raleway", Font.ROMAN_BASELINE, 25));         
+        pno.setBounds(175,112,134,30);                 
+        getContentPane().add(pno, BorderLayout.NORTH); 
+         
+        pnoF = new JTextField(15); 
+        pnoF.setFont(new Font("Arial", Font.BOLD, 14));         
+        pnoF.setBounds(349,118,230,30); 
+        getContentPane().add(pnoF, BorderLayout.NORTH);  
+         
+ 
+                         
+        l6 = new JLabel("loan type"); 
+        l6.setFont(new Font("Raleway", Font.ROMAN_BASELINE, 25));                 
+        l6.setBounds(175,175,118,30);         
+        getContentPane().add(l6); 
+         
+        String ans3[] = {"four wheeler","two wheeler","home","education"};         
+        c1 = new JComboBox(ans3);         
+        c1.setBackground(Color.WHITE);         
+        c1.setBounds(349,181,100,30);         
+        getContentPane().add(c1); 
+        b3 = new JButton("Calculate"); 
+         
+        b3.setBackground(Color.BLACK);         
+        b3.setForeground(Color.WHITE);         
+        b3.setFont(new Font("Arial", Font.BOLD, 14));         
+        b3.setBounds(198,269,230,40);         
+        getContentPane().add(b3); 
+         
+        getContentPane().setLayout(null); 
+                  
+        b3.addActionListener(this);         
+        getContentPane().setBackground(Color.CYAN ); 
+                  
+        setSize(650,450);         
+        setLocation(400,60);         
+        setVisible(true);  
+    }  
+ 	public void actionPerformed(ActionEvent ae) { 
+ 	 	try 
+        { 
+String type = (String)c1.getItemAt(c1.getSelectedIndex());  	 	 	
+conn c1 = new conn(); 
+String q1 = "SELECT intrest FROM inttable WHERE loan='"+type+"'"; 
+ResultSet rs = c1.s.executeQuery(q1);        
+String a1="";             
+if(rs.next())             a1=rs.getString("intrest");             float r=Float.parseFloat(a1);  	 
+float p=Float.parseFloat(nameF.getText()); 
+float t=Float.parseFloat(pnoF.getText()); 	 
+if (ae.getSource() == b3) {  	 	 
+float emi;   
+r = r / (12 * 100); // one month interest  	 	 	 	        
+t = t ; // one month period  	 	 	 	        
+emi = (p * r * (float)Math.pow(1 + r, t))/ (float)(Math.pow(1 + r, t) - 1); 
+ 	 	 	 	 
+ 	 	 	 	 
+ 	 	 	 	 
+ 	 	 	 	JOptionPane.showMessageDialog(null,"Emi is "+emi+""); 
+ 	 	 	 	 
+ 	 	 	} 
+ 	 	 
+ 	 	 	 
+ 	 	 	 
+ 	 	 	 
+ 
+ 	 	} catch (Exception e) { 
+ 	 	 	e.printStackTrace(); 
+ 	 	 	System.out.println("error: " + e); 
+ 	 	} 
+ 
+ 	} 
+ 
+ 	public static void main(String[] args) { 
+ 	 	new calculator().setVisible(true); 
+ 	} 
+ 
+ 	 
+} 
