@@ -1,21 +1,33 @@
-//fetch code
-
+//FETCH CODE
 package asimulator; 
  
 import java.sql.*; 
-    public class conn{     Connection c;     Statement s;     public conn(){           try{   
-            Class.forName("com.mysql.cj.jdbc.Driver");               c 
-=DriverManager.getConnection("jdbc:mysql://localhost:3306/artcommunity","root","root");                 s =c.createStatement();  
-            
-       }catch(Exception e){  
+    public class conn
+    {     
+    Connection c;     
+    Statement s;     
+    public conn()
+    {           
+    try
+    {     
+    Class.forName("com.mysql.cj.jdbc.Driver");               
+    c=DriverManager.getConnection("jdbc:mysql://localhost:3306/artcommunity","root","root");                 
+    s =c.createStatement();  
+       }
+       catch(Exception e){  
             System.out.println(e); 
        }   
     }   
 }  
-//full source code
+//FULL SOURCE CODE
 package asimulator; 
- import java.awt.*; import java.awt.event.*; import java.sql.ResultSet; 
-import java.text.AttributedCharacterIterator; import java.text.DecimalFormat; import java.util.ArrayList; import java.util.Enumeration; import java.util.Iterator; 
+ import java.awt.*; import java.awt.event.*; 
+ import java.sql.ResultSet; 
+import java.text.AttributedCharacterIterator; 
+import java.text.DecimalFormat; 
+import java.util.ArrayList; 
+import java.util.Enumeration; 
+import java.util.Iterator; 
  
 import javax.swing.*; 
 import javax.swing.table.DefaultTableModel; 
@@ -29,10 +41,6 @@ public class calculator extends JFrame implements ActionListener {
  	JComboBox c1; 
  	JCheckBox c2, c3, c4, c5; 
  	JToggleButton j1, j2, j3; 
- 	 
- 	 
- 	 
- 	 
   	private final ButtonGroup buttonGroup1 = new ButtonGroup();  	
     private final ButtonGroup buttonGroup2 = new ButtonGroup();  	
     private final ButtonGroup buttonGroup = new ButtonGroup(); 
@@ -74,33 +82,25 @@ public class calculator extends JFrame implements ActionListener {
         pnoF = new JTextField(15); 
         pnoF.setFont(new Font("Arial", Font.BOLD, 14));         
         pnoF.setBounds(349,118,230,30); 
-        getContentPane().add(pnoF, BorderLayout.NORTH);  
-         
- 
-                         
+        getContentPane().add(pnoF, BorderLayout.NORTH);             
         l6 = new JLabel("loan type"); 
         l6.setFont(new Font("Raleway", Font.ROMAN_BASELINE, 25));                 
         l6.setBounds(175,175,118,30);         
         getContentPane().add(l6); 
-         
         String ans3[] = {"four wheeler","two wheeler","home","education"};         
         c1 = new JComboBox(ans3);         
         c1.setBackground(Color.WHITE);         
         c1.setBounds(349,181,100,30);         
         getContentPane().add(c1); 
         b3 = new JButton("Calculate"); 
-         
         b3.setBackground(Color.BLACK);         
         b3.setForeground(Color.WHITE);         
         b3.setFont(new Font("Arial", Font.BOLD, 14));         
         b3.setBounds(198,269,230,40);         
         getContentPane().add(b3); 
-         
-        getContentPane().setLayout(null); 
-                  
+        getContentPane().setLayout(null);    
         b3.addActionListener(this);         
         getContentPane().setBackground(Color.CYAN ); 
-                  
         setSize(650,450);         
         setLocation(400,60);         
         setVisible(true);  
@@ -113,7 +113,9 @@ conn c1 = new conn();
 String q1 = "SELECT intrest FROM inttable WHERE loan='"+type+"'"; 
 ResultSet rs = c1.s.executeQuery(q1);        
 String a1="";             
-if(rs.next())             a1=rs.getString("intrest");             float r=Float.parseFloat(a1);  	 
+if(rs.next())             
+a1=rs.getString("intrest");             
+float r=Float.parseFloat(a1);  	 
 float p=Float.parseFloat(nameF.getText()); 
 float t=Float.parseFloat(pnoF.getText()); 	 
 if (ae.getSource() == b3) {  	 	 
@@ -121,27 +123,14 @@ float emi;
 r = r / (12 * 100); // one month interest  	 	 	 	        
 t = t ; // one month period  	 	 	 	        
 emi = (p * r * (float)Math.pow(1 + r, t))/ (float)(Math.pow(1 + r, t) - 1); 
- 	 	 	 	 
- 	 	 	 	 
- 	 	 	 	 
  	 	 	 	JOptionPane.showMessageDialog(null,"Emi is "+emi+""); 
- 	 	 	 	 
  	 	 	} 
- 	 	 
- 	 	 	 
- 	 	 	 
- 	 	 	 
- 
  	 	} catch (Exception e) { 
  	 	 	e.printStackTrace(); 
  	 	 	System.out.println("error: " + e); 
  	 	} 
- 
  	} 
- 
  	public static void main(String[] args) { 
  	 	new calculator().setVisible(true); 
  	} 
- 
- 	 
 } 
